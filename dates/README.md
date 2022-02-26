@@ -1,5 +1,6 @@
 I ran these estimates using Chronosynth https://github.com/OpenTreeOfLife/chronosynth/tree/dev
-to get node age estimates from input trees in the OpenTree datastore Phylesystem.
+to get node age estimates from input trees in the OpenTree datastore Phylesystem,
+and then smoothing the other node ages using Bladj https://github.com/phylocom/phylocom
 
 Hypothetically, anyone could run them as well.
 In practice, the configuration is a bit finicky and dates database is a bit sluggish to get up and running.
