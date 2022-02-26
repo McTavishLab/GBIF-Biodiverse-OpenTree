@@ -17,3 +17,6 @@ Where dates for the age of the clade weren't found in the database, I had to pas
 
 python ../../scripts/label_and_date_tree.py  -q ../../data/birds.csv --max_age 75 --output birds.tre
 python ../../scripts/label_and_date_tree.py  -q ../../data/gymnosperms.csv --max_age 285 --output gymno.tre
+
+
+If you upload the trees to itol, you can upload the annotation files to see support, conflict, and the taxon names.
