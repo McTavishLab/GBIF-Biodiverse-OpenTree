@@ -33,8 +33,8 @@ for lin in queryfile.readlines():
 
 ott_ids = list(ott_ids)
 ret = labelled_induced_synth(ott_ids = ott_ids,
-                                                       label_format = args.label_format, 
-                                                       inc_unlabelled_mrca=False, 
-                                                       standardize=True)
+                             label_format = args.label_format,
+                             inc_unlabelled_mrca=False,
+                             standardize=True)
 
 ret['labelled_tree'].write(path=args.output, schema='newick')
