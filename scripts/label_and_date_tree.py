@@ -11,6 +11,8 @@ from opentree import OT, annotations, taxonomy_helpers
 from opentree.taxonomy_helpers import labelled_induced_synth
 
 
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-q","--query", help="File containing ott_ids. First should have the header 'ott_id' and contain OpenTree taxon ids")
 parser.add_argument("-ma","--max_age", help="Root age estimate")
@@ -56,13 +58,6 @@ node_annotations = annotations.generate_synth_node_annotation(tree)
 
 annotations.write_itol_conflict(node_annotations)
 annotations.write_itol_support(node_annotations)
-
-
-#tree_dict=taxonomy_helpers.labelled_induced_synth(ott_ids=ott_ids, label_format='name')
-
-#for label in tree_dict['label_map']:
-#    ott_id = label.split()[-1]
-#    translation_dict[ott_id] = tree_dict['label_map'][label]
 
 
 
