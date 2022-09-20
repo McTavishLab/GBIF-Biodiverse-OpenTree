@@ -80,8 +80,20 @@ url     = 'https://dates.opentreeoflife.org/v4/dates/dated_tree'
 payload = { "node_ids" : node_ids }
 
 resp = session.post(url=url, data=json.dumps(payload))
-dated_tree = dendropy.Tree.get(data=resp.content.decode()[2:-4], schema="newick")
+resp_dict = json.loads(resp.content.decode())
+
+dated_tree = dendropy.Tree.get(data=resp_dict['dated_trees_newick_list'][0], schema="newick")
 dated_tree.write(path=args.output_dir+"/ottid_dated_tree.tre", schema='newick')
+
+
+
+date_cites_file = open("{}/date_citations.txt".format(args.output_dir), 'w')
+date_citations = OT.get_citations(ret['supporting_studies'])
+
+date_cites_file.write(date_citations)
+
+
+
 
 node_annotations = annotations.generate_synth_node_annotation(dated_tree)
 

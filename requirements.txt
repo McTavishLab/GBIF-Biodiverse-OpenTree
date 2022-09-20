@@ -1,2 +1,2 @@
 DendroPy
-opentree
+-e git+ssh://git@github.com/OpenTreeOfLife/python-opentree.git@itol_annot#egg=opentree
