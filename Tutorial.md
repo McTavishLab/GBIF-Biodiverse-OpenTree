@@ -67,6 +67,13 @@ Outputs will be written to the location specified by --output dir (default is sy
 Lablled_tree.txt: a tree in newick format tree containing these 100 taxa, and labelled internal nodes. 
 Labels are by default 'name_and_id' Use flag 'label format' to select one of 'name', 'id', or 'name_and_id'"
 
+ottid_dated_tree.tre: Dated tree with OTT ids as labels 
+ott_label_dated_tree.tre: Dated tree with OTT names as labels.
+
 Citations.txt: The citations of all the published trees inlcuded in the tree inference.
+date_citations.txt: The citations of all the published trees used to infer dates.
+
+synth.log: log file
+ottlabel.tx, conflict_annot.tre,  support_annot.tre: Annotation files appropraite for viewing and annotating the tree on [itol](https://itol.embl.de/)
 
 
