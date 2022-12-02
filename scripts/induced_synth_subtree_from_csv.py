@@ -81,7 +81,7 @@ cites_file.write(citations)
 ## Get Dated synth tree
 session = requests.Session()
 url     = 'https://dates.opentreeoflife.org/v4/dates/dated_tree'
-url =  'http://127.0.0.1:1983/v4/dates/dated_tree'
+#url =  'http://127.0.0.1:1983/v4/dates/dated_tree'
 
 payload = { "node_ids" : node_ids,
             "phylo_only": args.phylo_only}
