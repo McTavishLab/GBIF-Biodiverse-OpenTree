@@ -62,6 +62,21 @@ e.g.
 python scripts/induced_synth_subtree_from_csv.py -q tests/query.csv -o amphib_tree
 ```
 
+Some trees cannot be estiomated based on vailable data, and require a user provided max-age:
+e.g.
+```
+python induced_synth_subtree_from_csv.py --query ../tests/query.csv --output_dir amph_tree_max_age --max-age 127
+
+```
+
+To prune tips for which we do not have phylogenetic inputs, add the the flag "phylo-only" 
+e.g.
+```
+python induced_synth_subtree_from_csv.py --query ../tests/query.csv --output_dir amph_tree_phylo_only --phylo-only
+
+```
+
+
 Outputs will be written to the location specified by --output dir (default is synth_output)
 
 Lablled_tree.txt: a tree in newick format tree containing these 100 taxa, and labelled internal nodes. 
