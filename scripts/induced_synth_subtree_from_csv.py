@@ -3,6 +3,12 @@
 to run:
 python induced_synth_subtree_from_csv.py --query ../tests/query.csv --output_dir amph_tree
 
+or 
+python induced_synth_subtree_from_csv.py --query ../tests/query.csv --output_dir amph_tree_phylo_only --phylo-only
+
+or 
+python induced_synth_subtree_from_csv.py --query ../tests/query.csv --output_dir amph_tee_phylo_only --phylo-only --max-age 127
+
 -ott-ids data file should have a column containing ott_ids, labeled 'ott_id', and be comma delimited
 
 Will generate a tree, a logfile and a citations file, all in the output directory.
@@ -23,6 +29,7 @@ parser.add_argument("-q","--query", help="File containing ott_ids. First column 
 parser.add_argument("-m","--max-age", help="estimate for root age")
 parser.add_argument("-o","--output_dir", default="synth_output", help="output folder. default is synth_dir")
 parser.add_argument("-l","--label_format", default="name_and_id",help="label format. One of 'name', 'id', 'name_and_id'. Default is 'name_and_id'")
+parser.add_argument("-p","--phylo-only", action='store_true', help="only include taxa with phylogenetic information.")
 
 args = parser.parse_args()
 
@@ -74,9 +81,10 @@ cites_file.write(citations)
 ## Get Dated synth tree
 session = requests.Session()
 url     = 'https://dates.opentreeoflife.org/v4/dates/dated_tree'
-#url =  'http://127.0.0.1:1983/v4/dates/dated_tree'
+url =  'http://127.0.0.1:1983/v4/dates/dated_tree'
 
-payload = { "node_ids" : node_ids }
+payload = { "node_ids" : node_ids,
+            "phylo_only": args.phylo_only}
 if args.max_age:
     payload["max_age"] = args.max_age
 
@@ -110,8 +118,6 @@ node_annotations = annotations.generate_synth_node_annotation(dated_tree)
 
 
 dated_tree.write(path=args.output_dir+"/ott_label_dated_tree.tre", schema='newick')
-
-
 
 annotations.write_itol_conflict(node_annotations, filename=args.output_dir+"/conflict_annot.tre",)
 annotations.write_itol_support(node_annotations, filename=args.output_dir+"/support_annot.tre",)
